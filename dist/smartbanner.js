@@ -404,6 +404,9 @@ var SmartBanner = function () {
       bannerDiv.outerHTML = this.html;
       setContentPosition(this.height);
       addEventListeners(this);
+
+      // Custom Delivery Direto - Adjust Menu nav bar
+      $(document).find('.mobile-bar').addClass('has-smartbanner');
     }
   }, {
     key: 'exit',
@@ -413,6 +416,9 @@ var SmartBanner = function () {
       var banner = document.querySelector('.js_smartbanner');
       document.querySelector('body').removeChild(banner);
       _bakery2.default.bake();
+
+      // Custom Delivery Direto - Adjust Menu nav bar
+      $(document).find('.mobile-bar').removeClass('has-smartbanner');
     }
   }, {
     key: 'originalTop',

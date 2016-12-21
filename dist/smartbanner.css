@@ -3,7 +3,7 @@
  * Copyright © 2016 Ain Tohvri, contributors. Licensed under GPL-3.0.
  */
 .smartbanner {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   overflow-x: hidden;

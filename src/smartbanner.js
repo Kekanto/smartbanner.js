@@ -148,6 +148,9 @@ export default class SmartBanner {
     bannerDiv.outerHTML = this.html;
     setContentPosition(this.height);
     addEventListeners(this);
+
+    // Custom Delivery Direto - Adjust Menu nav bar
+    $(document).find('.mobile-bar').addClass('has-smartbanner');
   }
 
   exit() {
@@ -156,5 +159,8 @@ export default class SmartBanner {
     let banner = document.querySelector('.js_smartbanner');
     document.querySelector('body').removeChild(banner);
     Bakery.bake();
+
+    // Custom Delivery Direto - Adjust Menu nav bar
+    $(document).find('.mobile-bar').removeClass('has-smartbanner');
   }
 }
