@@ -138,10 +138,11 @@ export default class SmartBanner {
   }
 
   publish() {
-    if (Object.keys(this.options).length === 0) {
-      throw new Error('No options detected. Please consult documentation.');
-    } else if (Bakery.baked || !Detector.platform() || !this.platformEnabled) {
-      return false;
+    if (Object.keys(this.options).length === 0 || 
+        _bakery2.default.baked || 
+        !_detector2.default.platform() || 
+        !this.platformEnabled) {
+        return false;
     }
     let bannerDiv = document.createElement('div');
     document.querySelector('body').appendChild(bannerDiv);
