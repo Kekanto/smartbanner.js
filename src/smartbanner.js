@@ -139,8 +139,8 @@ export default class SmartBanner {
 
   publish() {
     if (Object.keys(this.options).length === 0 || 
-        Bakery.default.baked || 
-        !Detector.default.platform() || 
+        Bakery.baked || 
+        !Detector.platform() || 
         !this.platformEnabled) {
         return false;
     }

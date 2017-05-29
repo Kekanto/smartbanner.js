@@ -394,7 +394,7 @@ var SmartBanner = function () {
   _createClass(SmartBanner, [{
     key: 'publish',
     value: function publish() {
-      if (Object.keys(this.options).length === 0 || _bakery2.default.default.baked || !_detector2.default.default.platform() || !this.platformEnabled) {
+      if (Object.keys(this.options).length === 0 || _bakery2.default.baked || !_detector2.default.platform() || !this.platformEnabled) {
         return false;
       }
       var bannerDiv = document.createElement('div');
