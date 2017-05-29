@@ -1,6 +1,6 @@
 /*!
  * smartbanner.js v1.2.0 <https://github.com/ain/smartbanner.js>
- * Copyright © 2016 Ain Tohvri, contributors. Licensed under GPL-3.0.
+ * Copyright © 2017 Ain Tohvri, contributors. Licensed under GPL-3.0.
  */
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
@@ -303,11 +303,11 @@ var _optionparser2 = _interopRequireDefault(_optionparser);
 
 var _detector = require('./detector.js');
 
-var _detector2 = _interopRequireDefault(_detector);
+var _detector3 = _interopRequireDefault(_detector);
 
 var _bakery = require('./bakery.js');
 
-var _bakery2 = _interopRequireDefault(_bakery);
+var _bakery3 = _interopRequireDefault(_bakery);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -334,22 +334,22 @@ function addEventListeners(self) {
   closeIcon.addEventListener('click', function () {
     return handleExitClick(event, self);
   });
-  if (_detector2.default.jQueryMobilePage()) {
+  if (_detector3.default.jQueryMobilePage()) {
     $(document).on('pagebeforeshow', self, handleJQueryMobilePageLoad);
   }
 }
 
 function removeEventListeners() {
-  if (_detector2.default.jQueryMobilePage()) {
+  if (_detector3.default.jQueryMobilePage()) {
     $(document).off('pagebeforeshow', handleJQueryMobilePageLoad);
   }
 }
 
 function setContentPosition(value) {
-  var wrappers = _detector2.default.wrapperElement();
+  var wrappers = _detector3.default.wrapperElement();
   for (var i = 0, l = wrappers.length, wrapper; i < l; i++) {
     wrapper = wrappers[i];
-    if (_detector2.default.jQueryMobilePage()) {
+    if (_detector3.default.jQueryMobilePage()) {
       if (wrapper.getAttribute(datas.originalTop)) {
         continue;
       }
@@ -368,10 +368,10 @@ function setContentPosition(value) {
 }
 
 function restoreContentPosition() {
-  var wrappers = _detector2.default.wrapperElement();
+  var wrappers = _detector3.default.wrapperElement();
   for (var i = 0, l = wrappers.length, wrapper; i < l; i++) {
     wrapper = wrappers[i];
-    if (_detector2.default.jQueryMobilePage() && wrapper.getAttribute(datas.originalTop)) {
+    if (_detector3.default.jQueryMobilePage() && wrapper.getAttribute(datas.originalTop)) {
       wrapper.style.top = wrapper.getAttribute(datas.originalTop) + 'px';
     } else if (wrapper.getAttribute(datas.originalMarginTop)) {
       wrapper.style.marginTop = wrapper.getAttribute(datas.originalMarginTop) + 'px';
@@ -385,7 +385,7 @@ var SmartBanner = function () {
 
     var parser = new _optionparser2.default();
     this.options = parser.parse();
-    this.platform = _detector2.default.platform();
+    this.platform = _detector3.default.platform();
   }
 
   // DEPRECATED. Will be removed.
@@ -394,10 +394,7 @@ var SmartBanner = function () {
   _createClass(SmartBanner, [{
     key: 'publish',
     value: function publish() {
-      if (Object.keys(this.options).length === 0 || 
-        _bakery2.default.baked || 
-        !_detector2.default.platform() || 
-        !this.platformEnabled) {
+      if (Object.keys(this.options).length === 0 || _bakery2.default.baked || !_detector2.default.platform() || !this.platformEnabled) {
         return false;
       }
       var bannerDiv = document.createElement('div');
@@ -416,7 +413,7 @@ var SmartBanner = function () {
       restoreContentPosition();
       var banner = document.querySelector('.js_smartbanner');
       document.querySelector('body').removeChild(banner);
-      _bakery2.default.bake();
+      _bakery3.default.bake();
 
       // Custom Delivery Direto - Adjust Menu nav bar
       $(document).find('.mobile-bar').removeClass('has-smartbanner');
@@ -424,7 +421,7 @@ var SmartBanner = function () {
   }, {
     key: 'originalTop',
     get: function get() {
-      var wrapper = _detector2.default.wrapperElement()[0];
+      var wrapper = _detector3.default.wrapperElement()[0];
       return parseFloat(wrapper.getAttribute(datas.originalTop));
     }
 
@@ -433,7 +430,7 @@ var SmartBanner = function () {
   }, {
     key: 'originalTopMargin',
     get: function get() {
-      var wrapper = _detector2.default.wrapperElement()[0];
+      var wrapper = _detector3.default.wrapperElement()[0];
       return parseFloat(wrapper.getAttribute(datas.originalMarginTop));
     }
   }, {
